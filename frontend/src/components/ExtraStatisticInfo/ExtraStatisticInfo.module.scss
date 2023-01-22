@@ -1,0 +1,74 @@
+@import '../../styles/global';
+
+.title {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $gray;
+  padding-bottom: 10px;
+  opacity: .5;
+  gap: 10px;
+  margin-bottom: 20px;
+  svg {
+    width: 30px;
+    height: 30px;
+    transform: rotate(180deg);
+    margin-left: -10px;
+  }
+}
+
+.dataList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dataItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .date {
+    font-size: 10px;
+  }
+
+  span {
+    display: inline-block;
+    border-radius: 5px;
+    height: 20px;
+  }
+
+  .background {
+    flex: 1;
+    background-color: $lightGray;
+  }
+
+  .reps {
+    background-color: $mainColor;
+    opacity: .8;
+  }
+
+  .weight {
+    background-color: $blue;
+  }
+
+  .data {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    color: $black;
+    font-size: 12px;
+  }
+}
+
+.heading {
+  display: flex;
+  font-size: 12px;
+  gap: 5px;
+
+  .headingItem:first-child {
+    margin-right: 23px;
+  }
+  .headingItem:not(:first-child) {
+    flex: 1;
+  }
+}

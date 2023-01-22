@@ -25,7 +25,6 @@
 
   li {
     position: relative;
-    font-size: 18px;
     text-transform: capitalize;
 
     &:before {
@@ -44,7 +43,7 @@
     align-self: center;
   }
 
-  .maxCount {
+  .maxWeight {
     color: $paragraphColor;
   }
 }

@@ -1,16 +1,52 @@
 @import "../../styles/templates";
 
+
+.sides {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 200vw;
+  margin-left: -20px;
+  transition: .3s;
+
+  &.scrollToRight {
+    transform: translateX(-50%);
+  }
+
+}
+
+.leftSide, .rightSide {
+  padding: 0 20px;
+  width: 100vw;
+}
+
 .exerciseInfo {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   padding: 15px 20px;
   border-radius: 10px;
   box-shadow: 4px 4px 20px 0 rgba(34, 60, 80, 0.1);
   margin-bottom: 40px;
 }
 
-.exerciseItem:not(:first-child) {
-  @extend %list-dot;
+.exerciseItem {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: attr(data-tooltip);
+    font-size: 10px;
+    top:  -12px;
+  }
+
+  &:last-child {
+    align-self: center;
+    margin-left: 35px;
+  }
+}
+
+.exerciseItem svg {
+  width: 20px;
+  height: 20px;
 }
 
 .exerciseCards {

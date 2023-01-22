@@ -5,18 +5,18 @@ import styles from './ExerciseInfoCard.module.scss';
 interface IExerciseInfoCartProps {
     exerciseName: string;
     lastCount: number;
-    maxCount: number;
     img: string;
+    weight?: number
 }
 
-const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({exerciseName, maxCount, lastCount, img}) => {
+const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({exerciseName, lastCount, img, weight}) => {
   return (
     <li className={styles.container}>
       <ul className={styles.info}>
         <li><img src={img} alt=""/></li>
         <li data-tooltip="Наименование" className={styles.exerciseName}>{exerciseName}</li>
-        <li data-tooltip="Макс." className={styles.maxCount}>{maxCount}</li>
-        <li data-tooltip="Последнее">{lastCount}</li>
+        {weight && <li data-tooltip="Вес" className={styles.maxWeight}>{weight}кг</li>}
+        <li data-tooltip="Количество">{lastCount}</li>
       </ul>
     </li>
   );
