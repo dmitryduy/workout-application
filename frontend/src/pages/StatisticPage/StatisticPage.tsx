@@ -83,15 +83,11 @@ const StatisticPage: React.FC = () => {
       <Subtitle text="Все упражнения"/>
       <ul className={styles.exerciseCards}>
         <ExerciseInfoCard
-          exerciseName="какое" maxCount={10} firstDate="2 jun" firstDateCount={2} lastDateCount={5} lastDate="ju41"/>
+          exerciseName="какое" maxCount={10} lastCount={20} img="https://cdn.lifehacker.ru/wp-content/uploads/2020/09/Trenirovka-dnya-4-vida-otzhimanij-dlya-polnoj-prokachki-ruk-i-grudi_1599604970.jpg"/>
         <ExerciseInfoCard
-          exerciseName="какое" maxCount={10} firstDate="2 jun" firstDateCount={2} lastDateCount={5} lastDate="ju41"/>
-
+          exerciseName="Отжимания" maxCount={10} lastCount={20} img="https://cdn.lifehacker.ru/wp-content/uploads/2020/09/Trenirovka-dnya-4-vida-otzhimanij-dlya-polnoj-prokachki-ruk-i-grudi_1599604970.jpg"/>
         <ExerciseInfoCard
-          exerciseName="какое" maxCount={10} firstDate="2 jun" firstDateCount={2} lastDateCount={5} lastDate="ju41"/>
-
-        <ExerciseInfoCard
-          exerciseName="какое" maxCount={10} firstDate="2 jun" firstDateCount={2} lastDateCount={5} lastDate="ju41"/>
+          exerciseName="Отжимания С обратным хватом" maxCount={10} lastCount={20} img="https://cdn.lifehacker.ru/wp-content/uploads/2020/09/Trenirovka-dnya-4-vida-otzhimanij-dlya-polnoj-prokachki-ruk-i-grudi_1599604970.jpg"/>
 
       </ul>
     </Layout>

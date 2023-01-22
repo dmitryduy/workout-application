@@ -12,3 +12,9 @@
 .exerciseItem:not(:first-child) {
   @extend %list-dot;
 }
+
+.exerciseCards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

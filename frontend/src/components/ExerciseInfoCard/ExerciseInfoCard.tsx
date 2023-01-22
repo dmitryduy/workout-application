@@ -4,29 +4,19 @@ import styles from './ExerciseInfoCard.module.scss';
 
 interface IExerciseInfoCartProps {
     exerciseName: string;
-    firstDate: string;
-    lastDate: string;
-    firstDateCount: number;
-    lastDateCount: number;
+    lastCount: number;
     maxCount: number;
+    img: string;
 }
 
-const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({
-  exerciseName,
-  maxCount,
-  lastDateCount,
-  firstDateCount,
-  lastDate,
-  firstDate}) => {
+const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({exerciseName, maxCount, lastCount, img}) => {
   return (
     <li className={styles.container}>
-      <h3>{exerciseName}</h3>
       <ul className={styles.info}>
-        <li>Старт: {firstDate}</li>
-        <li>Количество: {firstDateCount}</li>
-        <li>Текущий: {lastDate}</li>
-        <li>Количество: {lastDateCount}</li>
-        <li>Макс.: {maxCount}</li>
+        <li><img src={img} alt=""/></li>
+        <li data-tooltip="Наименование" className={styles.exerciseName}>{exerciseName}</li>
+        <li data-tooltip="Макс." className={styles.maxCount}>{maxCount}</li>
+        <li data-tooltip="Последнее">{lastCount}</li>
       </ul>
     </li>
   );
