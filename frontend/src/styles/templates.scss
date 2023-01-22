@@ -1,0 +1,17 @@
+@import "./global";
+
+
+%list-dot {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 7px;
+    height: 7px;
+    background-color: $iconColor;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+  }
+}

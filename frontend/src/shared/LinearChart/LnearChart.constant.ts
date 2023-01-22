@@ -1,11 +1,10 @@
 import { ChartOptions } from 'chart.js';
-import { ChartDataset } from 'chart.js/dist/types';
 
 export const DEFAULT_OPTIONS: ChartOptions = {
   interaction: {
     intersect: false
   },
-  responsive: true,
+  responsive: true
 };
 
 export const DEFAULT_DATASET_SETTINGS = {

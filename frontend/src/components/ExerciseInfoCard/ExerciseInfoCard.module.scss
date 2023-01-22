@@ -1,0 +1,44 @@
+@import "../../styles/templates";
+@import "../../styles/global";
+
+.container {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  flex-direction: column;
+  margin-left: 70px;
+  padding: 20px 0;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: $mainColor;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    top: 30px;
+    left: -70px;
+    box-shadow: 4px 4px 30px 0 rgba(34, 60, 80, 0.1);
+    z-index: 1;
+  }
+  &:not(:last-child):after {
+    content: '';
+    position: absolute;
+    background-color: $gray;
+    opacity: .4;
+    width: 2px;
+    left: -56px;
+    height: 100%;
+    top: 30px;
+  }
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+
+  li {
+    color: $paragraphColor;
+  }
+}

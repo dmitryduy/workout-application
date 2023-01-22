@@ -1,0 +1,14 @@
+@import "../../styles/templates";
+
+.exerciseInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 20px 0 rgba(34, 60, 80, 0.1);
+  margin-bottom: 40px;
+}
+
+.exerciseItem:not(:first-child) {
+  @extend %list-dot;
+}
