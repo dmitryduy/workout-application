@@ -1,74 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 
-import {ReactComponent as ArrowIcon} from '../../assets/icons/arrow.svg';
+import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
+import Clover from '../../shared/Clover/Clover';
+import CommonClever from '../../shared/CommonClever/CommonClever';
 
 import styles from './ExtraStatisticInfo.module.scss';
 
 
 interface IExtraStatisticInfoProps {
-    onBack: () => void
+  onBack: () => void;
 }
 
 const ExtraStatisticInfo: React.FC<IExtraStatisticInfoProps> = ({onBack}) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <>
       <div className={styles.title} onClick={onBack}>
         <ArrowIcon/>
         <h3>Наименование упражнения</h3>
       </div>
-
+      <h4 className={styles.date}>Понедельник, 23 января 2023</h4>
       <ul className={styles.dataList}>
-        <li className={styles.heading}>
-          <p className={styles.headingItem}>Дата</p>
-          <p className={styles.headingItem}>Количество</p>
-          <p className={styles.headingItem}>Вес(кг)</p>
-        </li>
-        <li className={styles.dataItem}>
-          <p className={styles.date}>20.20.2022</p>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.data, styles.reps)}/>
-          </span>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.weight, styles.data)}>
-              20
-            </span>
-          </span>
-        </li>
-        <li className={styles.dataItem}>
-          <p className={styles.date}>20.20.2022</p>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.data, styles.reps)}/>
-          </span>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.weight, styles.data)}>
-              20
-            </span>
-          </span>
-        </li>
-        <li className={styles.dataItem}>
-          <p className={styles.date}>20.20.2022</p>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.data, styles.reps)}/>
-          </span>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.weight, styles.data)}>
-              20
-            </span>
-          </span>
-        </li>
-        <li className={styles.dataItem}>
-          <p className={styles.date}>20.20.2022</p>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.data, styles.reps)}/>
-          </span>
-          <span className={styles.background}>
-            <span style={{width: '50%'}} className={cn(styles.weight, styles.data)}>
-              20
-            </span>
-          </span>
-        </li>
+        {Array(10).fill(0).map((_, index) =>
+          <li className={styles.dataItem} key={index} onClick={() => setActiveIndex(index)}>
+            <p>20.20.2022</p>
+            <CommonClever small isActive={activeIndex === index}/>
+          </li>)}
       </ul>
+      <Clover
+        weight={{max: 100, current: 40}}
+        mood={{current: 'Крутой'}}
+        reps={{max: 20, current: 10}}
+        smth={{current: 'хз что'}}
+      />
+
+
     </>
   );
 };
