@@ -8,8 +8,9 @@
 }
 
 .content {
-  flex: 1;
+  height: calc(100% - 80px);
   overflow: auto;
+  padding-bottom: 20px;
 }
 
 li {

@@ -1,0 +1,1 @@
+export const MAX_APPROACH_COUNT = 3;

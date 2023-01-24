@@ -1,0 +1,27 @@
+@import "../../styles/global";
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  background-color: rgba($mainColor, .2);
+  width: 30px;
+  height: 30px;
+  border: none;
+  color: $mainColor;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.counter {
+  border: none;
+  outline: none;
+  color: $paragraphColor;
+  font-size: 14px;
+  max-width: 50px;
+  &::placeholder {
+    color: $paragraphColor;
+  }
+}

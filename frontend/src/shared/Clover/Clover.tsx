@@ -21,9 +21,9 @@ const leafInfo: ILeafInfo = {
     unit: null,
     deg: 135
   },
-  smth: {
-    title: 'Что то',
-    unit: null,
+  approach: {
+    title: 'Подходы',
+    unit: ' штуки',
     deg: -135
   }
 };
@@ -32,18 +32,18 @@ const leafInfo: ILeafInfo = {
 
 interface ICloverProps {
   mood: {
-    current: string;
+    current: string[];
   };
   reps: {
-    current: number;
+    current: number[];
     max: number;
   };
   weight: {
-    current: number;
+    current: number[];
     max: number;
   };
-  smth: {
-    current: string;
+  approach: {
+    current: [number];
   };
 }
 
@@ -56,16 +56,16 @@ const Clover: React.FC<ICloverProps> = props => {
       <CommonClever rotate={rotate} setType={setType}/>
       <div className={styles.infoClover}>
         <div className={styles.colorInfo}>
-          <span>Количество</span><span>Вес(кг)</span><span>Настроение</span><span>Еще что-то</span>
+          <span>Количество</span><span>Вес(кг)</span><span>Настроение</span><span>Подходы</span>
         </div>
         {type && <div className={styles.moreInfo}>
           <h4>{leafInfo[type].title}:</h4>
-          <p>
-            <span className={styles.currentValue}>{props[type].current}</span>
+          {props[type].current.map((number, idx) => <p key={idx}>
+            {props[type].current[idx]}
             {(type === 'reps' || type === 'weight') &&
             <span className={styles.maxValue}>/{props[type].max}&nbsp;</span>}
             {leafInfo[type].unit}
-          </p>
+          </p>) }
         </div>}
       </div>
     </div>

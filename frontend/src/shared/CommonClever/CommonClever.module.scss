@@ -34,7 +34,7 @@ $leafSize: 50px;
     height: ($leafSize * 2) /3;
 
     span {
-      transition: none !important;
+      transition: .2s !important;
       height: $leafSize / 3;
       width: $leafSize / 3;
     }

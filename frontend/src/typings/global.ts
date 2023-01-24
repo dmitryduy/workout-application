@@ -4,4 +4,4 @@ export interface ILeaf {
   deg: number;
 }
 
-export type ILeafInfo = Record<'reps' | 'weight' | 'mood' | 'smth', ILeaf>
+export type ILeafInfo = Record<'reps' | 'weight' | 'mood' | 'approach', ILeaf>

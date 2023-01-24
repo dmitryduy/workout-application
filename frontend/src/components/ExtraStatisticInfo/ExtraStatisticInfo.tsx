@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
 import Clover from '../../shared/Clover/Clover';
 import CommonClever from '../../shared/CommonClever/CommonClever';
+import ApproachSetup from '../ApproachSetup/ApproachSetup';
 
 import styles from './ExtraStatisticInfo.module.scss';
 
@@ -30,13 +31,12 @@ const ExtraStatisticInfo: React.FC<IExtraStatisticInfoProps> = ({onBack}) => {
           </li>)}
       </ul>
       <Clover
-        weight={{max: 100, current: 40}}
-        mood={{current: 'Крутой'}}
-        reps={{max: 20, current: 10}}
-        smth={{current: 'хз что'}}
+        weight={{max: 100, current: [40, 4, 5]}}
+        mood={{current: ['Крутой', 'dkj', 'kjdf']}}
+        reps={{max: 20, current: [10, 12, 12]}}
+        approach={{current: [4]}}
       />
-
-
+      <ApproachSetup prop="3"/>
     </>
   );
 };

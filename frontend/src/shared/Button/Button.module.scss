@@ -1,0 +1,12 @@
+@import "../../styles/global";
+
+
+.button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: $mainColor;
+  color: #fff;
+  font-size: 16px;
+}

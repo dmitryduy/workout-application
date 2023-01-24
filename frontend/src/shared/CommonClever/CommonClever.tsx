@@ -29,7 +29,7 @@ const CommonClever: React.FC<ICommonCleverProps> = ({rotate = 0, setType, small 
       <span className={cn({[styles.activeLeaf]: rotate === 45})} data-leaf="reps"/>
       <span className={cn({[styles.activeLeaf]: rotate === -45})} data-leaf="weight"/>
       <span className={cn({[styles.activeLeaf]: rotate === 135})} data-leaf="mood"/>
-      <span className={cn({[styles.activeLeaf]: rotate === -135})} data-leaf="smth"/>
+      <span className={cn({[styles.activeLeaf]: rotate === -135})} data-leaf="approach"/>
     </div>
   );
 };
