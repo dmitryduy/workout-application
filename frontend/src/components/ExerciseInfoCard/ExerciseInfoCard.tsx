@@ -1,22 +1,25 @@
 import React from 'react';
 
+import { numberToUnitNumber } from '../../utils/numberToUnitNumber';
+
 import styles from './ExerciseInfoCard.module.scss';
 
 interface IExerciseInfoCartProps {
     exerciseName: string;
-    lastCount: number;
+    reps: number;
     img: string;
     weight?: number
 }
 
-const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({exerciseName, lastCount, img, weight}) => {
+const ExerciseInfoCard: React.FC<IExerciseInfoCartProps> = ({exerciseName, reps, img, weight}) => {
+
   return (
     <li className={styles.container}>
       <ul className={styles.info}>
         <li><img src={img} alt=""/></li>
         <li data-tooltip="Наименование" className={styles.exerciseName}>{exerciseName}</li>
-        {weight && <li data-tooltip="Вес" className={styles.maxWeight}>{weight}кг</li>}
-        <li data-tooltip="Количество">{lastCount}</li>
+        <li data-tooltip="Вес" className={styles.maxWeight}>{numberToUnitNumber(weight, 'weight')}</li>
+        <li data-tooltip="Количество">{numberToUnitNumber(reps, 'count')}</li>
       </ul>
     </li>
   );

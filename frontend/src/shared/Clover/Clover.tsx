@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CommonClever from '../CommonClever/CommonClever';
 import { ILeafInfo } from '../../typings/global';
@@ -22,8 +22,8 @@ const leafInfo: ILeafInfo = {
     deg: 135
   },
   approach: {
-    title: 'Подходы',
-    unit: ' штуки',
+    title: 'Количество подходов',
+    unit: null,
     deg: -135
   }
 };
@@ -48,8 +48,12 @@ interface ICloverProps {
 }
 
 const Clover: React.FC<ICloverProps> = props => {
-  const [type, setType] = useState<keyof ILeafInfo>();
+  const [type, setType] = useState<keyof ILeafInfo | null>(null);
   const rotate = type ? leafInfo[type].deg : 0;
+
+  useEffect(() => {
+    setType(null);
+  }, [props.reps]);
 
   return (
     <div className={styles.container}>
