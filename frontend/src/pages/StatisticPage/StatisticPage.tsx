@@ -10,11 +10,11 @@ import { drawGridLinearGradient, drawLineLinearGradient } from '../../utils/draw
 import ExerciseInfoCard from '../../components/ExerciseInfoCard/ExerciseInfoCard';
 import {ReactComponent as ArrowIcon} from '../../assets/icons/arrow.svg';
 import ExtraStatisticInfo from '../../components/ExtraStatisticInfo/ExtraStatisticInfo';
-import useFetch from '../../hooks/useFetch';
 import { numberToUnitNumber } from '../../utils/numberToUnitNumber';
 import { useAppDispatch } from '../../hooks/useRedux';
-import { getExerciseRecordsAction } from '../../redux/reducers/rootReducer';
-import { IExerciseRecordsResponse } from '../../api/exerciseApi/exerciseApi.typings';
+import { getAllExerciseAction, getExerciseRecordsAction } from '../../redux/reducers/rootReducer';
+import { IExerciseRecordsResponse, IGetAllExercisesResponse } from '../../api/exerciseApi/exerciseApi.typings';
+import BottomMenu from '../../components/BottomMenu/BottomMenu';
 
 import styles from './StatisticPage.module.scss';
 
@@ -33,17 +33,23 @@ export interface IExerciseResponse {
 
 
 const StatisticPage: React.FC = () => {
-  const {progress, data} = useFetch<IExerciseResponse[]>('/exercises');
   const [isExtraStatistic, setIsExtraStatistic] = useState(false);
+  const [progress, setProgress] = useState<null | 'done' | 'error' | 'loading'>(null);
   const [activeExercise, setActiveExercise] = useState<IExerciseResponse | null>(null);
-  const [exerciseRecords, setExerciseRecords] = useState<IExerciseRecordsResponse | null>(null);
+  const [data, setData] = useState<IGetAllExercisesResponse | null>(null);
+  const [exerciseRecords, setExerciseRecords] = useState<IGetAllExercisesResponse | null>(null);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (progress === 'done') {
-      setActiveExercise(data && data[0]);
-    }
-  }, [progress]);
+    setProgress('loading');
+    dispatch(getAllExerciseAction())
+      .unwrap()
+      .then(data => {
+        setData(data);
+        setProgress('done');
+      })
+      .catch(e => console.log(e));
+  }, []);
 
   if (progress === 'error') {
     return <div>Error</div>;
@@ -58,13 +64,13 @@ const StatisticPage: React.FC = () => {
       reps: d.reps
     }));
 
-  const openExtendedInfo = () => {
-    dispatch(getExerciseRecordsAction({params: {exerciseId: activeExercise?.id || ''}}))
+  /*const openExtendedInfo = () => {
+    dispatch(getExerciseRecordsAction({params: {id: activeExercise?.id || ''}}))
       .unwrap()
       .then(setExerciseRecords)
       .catch(alert);
     setIsExtraStatistic(true);
-  };
+  };*/
   return (
     <Layout title="Статистика">
       <div className={cn(styles.sides, {[styles.scrollToRight]: isExtraStatistic})}>
@@ -126,7 +132,7 @@ const StatisticPage: React.FC = () => {
                 data: chartData ? chartData.map(data => data.reps) : [],
               }]
             }}/>
-          <ul className={styles.exerciseInfo} onClick={openExtendedInfo}>
+          <ul className={styles.exerciseInfo} onClick={() => 3}>
             <li data-tooltip="Наименование" className={styles.exerciseItem}>{activeExercise?.title}</li>
             <li data-tooltip="Вес" className={styles.exerciseItem}>
               {numberToUnitNumber(activeExercise?.lastWeight, 'weight')}
@@ -140,21 +146,26 @@ const StatisticPage: React.FC = () => {
           <Subtitle text="Все упражнения"/>
           <ul className={styles.exerciseCards}>
             {data?.map(info => <ExerciseInfoCard
-              key={info.id}
-              exerciseName={info.title} weight={info.lastWeight} reps={info.lastReps} img={info.image}/>
+              key={info.user?.id}
+              exerciseName={info.exerciseName}
+              weight={info.user?.weights[0]}
+              reps={info.user?.reps[0]}
+              img={info.exerciseImage}
+            />
             )}
           </ul>
         </div>
         <div className={styles.rightSide}>
-          <ExtraStatisticInfo
+          {/*<ExtraStatisticInfo
             data={exerciseRecords?.data}
             maxReps={exerciseRecords?.maxReps}
             maxWeight={exerciseRecords?.maxWeight}
             title={activeExercise?.title || ''}
             onBack={() => setIsExtraStatistic(false)}
-          />
+          />*/}
         </div>
       </div>
+      <BottomMenu/>
     </Layout>
   );
 };

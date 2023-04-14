@@ -17,8 +17,10 @@ export const getAsyncActionQuery = <TRes>(name: string, func: IQueryFunction<TRe
       return response.data;
     } catch (e: unknown) {
       if (axios.isAxiosError(e)) {
-        const response = e as AxiosError<{ error: string }>;
-        return thunkApi.rejectWithValue(response.response?.data?.error || 'Ошибка');
+        const response = e as AxiosError<{ message: string }>;
+        const message = response.response?.data?.message;
+        const error = typeof message === 'string' ? message : message && message[0];
+        return thunkApi.rejectWithValue(error || 'Ошибка');
       }
       return thunkApi.rejectWithValue('Ошибка');
     }
@@ -31,8 +33,10 @@ export const getAsyncActionMutation = <TReq, TRes>(name: string, func: IMutation
       return response.data;
     } catch (e: unknown) {
       if (axios.isAxiosError(e)) {
-        const response = e as AxiosError<{ error: string }>;
-        return thunkApi.rejectWithValue(response.response?.data?.error || 'Ошибка');
+        const response = e as AxiosError<{ message: string | string[] }>;
+        const message = response.response?.data?.message;
+        const error = typeof message === 'string' ? message : message && message[0];
+        return thunkApi.rejectWithValue(error || 'Ошибка');
       }
       return thunkApi.rejectWithValue('Ошибка');
     }

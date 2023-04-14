@@ -12,7 +12,9 @@ const Layout: React.FC<PropsWithChildren<ILayoutProps>> = ({title, children}) =>
       <div className={styles.heading}>
         <h1 className={styles.title}>{title}</h1>
       </div>
-      {children}
+      <div className={styles.content}>
+        {children}
+      </div>
     </div>
   );
 };

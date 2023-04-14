@@ -6,7 +6,7 @@ import styles from './ExerciseInfoCard.module.scss';
 
 interface IExerciseInfoCartProps {
     exerciseName: string;
-    reps: number;
+    reps?: number;
     img: string;
     weight?: number
 }

@@ -12,3 +12,7 @@ $mainColor: $orange;
 $backgroundColor: #fff;
 $paragraphColor: #c5c4c9;
 $headingColor: $black;
+
+$layoutHeadingHeight: 100px;
+$layoutHeadingMarginBottom: 30px;
+$layoutContentHeight: calc(100vh - #{$layoutHeadingMarginBottom} - #{$layoutHeadingHeight})

@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { UserExerciseEntity } from './userExercise';
+import { UserExerciseEntity } from './userExercise.entity';
 
 @Entity()
 export class UserEntity {
@@ -9,6 +9,11 @@ export class UserEntity {
   @Column()
   password: string;
 
-  @OneToMany(() => UserExerciseEntity, (userExercise) => userExercise.user)
+  @Column({ default: false })
+  isAdmin: boolean;
+
+  @OneToMany(() => UserExerciseEntity, (userExercise) => userExercise.user, {
+    eager: true,
+  })
   exercises: UserExerciseEntity[];
 }

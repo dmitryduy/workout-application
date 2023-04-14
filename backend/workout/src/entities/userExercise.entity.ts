@@ -10,7 +10,10 @@ import { UserEntity } from './user.entity';
 @Entity()
 export class UserExerciseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
+
+  @Column()
+  exerciseId: number;
 
   @CreateDateColumn()
   date: Date;
@@ -18,7 +21,7 @@ export class UserExerciseEntity {
   @Column()
   reps: string;
 
-  @Column()
+  @Column({ nullable: true })
   weights: string;
 
   @Column()

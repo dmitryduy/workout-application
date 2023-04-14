@@ -5,11 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './entities/user.entity';
 import { ExerciseEntity } from './entities/exercise.entity';
-import { UserExerciseEntity } from './entities/userExercise';
+import { UserExerciseEntity } from './entities/userExercise.entity';
+import { ExerciseModule } from './exercise/exercise.module';
 
 @Module({
   imports: [
     UserModule,
+    ExerciseModule,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,

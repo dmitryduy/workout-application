@@ -1,0 +1,14 @@
+@import "../../styles/global";
+
+.delimiter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &:before, &:after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: $gray;
+  }
+}

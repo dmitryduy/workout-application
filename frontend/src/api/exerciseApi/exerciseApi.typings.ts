@@ -8,3 +8,16 @@ export interface IExerciseRecordsResponse {
   maxReps: number;
   maxWeight: number;
 }
+
+export type IGetAllExercisesResponse = {
+  user: {
+    id: number;
+    exerciseId: number;
+    date: Date;
+    moods: string[];
+    reps: number[];
+    weights: number[];
+  } | null;
+  exerciseName: string;
+  exerciseImage: string;
+}[]
